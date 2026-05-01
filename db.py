@@ -61,3 +61,27 @@ def delete_task(id: int):
 def get_all_tasks():
     data = read_file()
     return data["tasks"]
+
+
+def get_user_by_username(username):
+    data = read_file()
+
+    for user in data["users"]:
+        if user["username"] == username:
+            return user
+    else:
+        return False
+
+
+def add_user(username, password):
+    data = read_file()
+
+    new_user = {
+        "id": data["current_user_id"],
+        "username": username,
+        "password": password,
+    }
+    data["users"].append(new_user)
+    data["current_user_id"] += 1
+
+    write_file(data)

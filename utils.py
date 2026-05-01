@@ -7,6 +7,14 @@ def print_menu() -> None:
     print("5. Mark Task As Incompleted.")
     print("6. Delete Task.")
     print("7. Search Task.")
+    print("8. Logout")
+    print("0. Exit.")
+
+
+def print_main_menu() -> None:
+    print("-----------------------Main Menu-----------------------")
+    print("1. Register.")
+    print("2. Login.")
     print("0. Exit.")
 
 

@@ -1,9 +1,13 @@
+from getpass import getpass
+
 from db import (
     add_task,
     get_all_tasks,
     mark_task_as_completed,
     mark_task_as_incompleted,
     delete_task,
+    get_user_by_username,
+    add_user,
 )
 
 
@@ -67,3 +71,39 @@ def handle_search_task():
     for task in tasks:
         if search.lower() in task["title"] or search.lower() in task["description"]:
             print(task["id"], task["title"], task["description"], "bajarilmagan")
+
+
+def handle_register():
+    username = input("username: ")
+    password = getpass("password: ")
+    confirm = getpass("confirm: ")
+
+    existing_user = get_user_by_username(username)
+    if existing_user != False:
+        print("username already exists.")
+        return
+
+    if password != confirm:
+        print("password va confirm teng emas.")
+        return
+
+    add_user(username, password)
+    print("siz muvaffaqiyatli royxatdan otdingiz.")
+
+
+def handle_login():
+    username = input("username: ")
+    password = getpass("password: ")
+
+    existing_user = get_user_by_username(username)
+    if existing_user == False:
+        print("username topilmadi.")
+        return
+
+    if existing_user["password"] != password:
+        print("password xato")
+        return
+
+    print("siz muvaffaqiyatli login boldingiz.")
+
+    return existing_user

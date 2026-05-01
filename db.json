@@ -25,5 +25,18 @@
             "status": false
         }
     ],
-    "current_id": 8
+    "current_id": 8,
+    "users": [
+        {
+            "id": 1,
+            "username": "alijon",
+            "password": "12345678"
+        },
+        {
+            "id": 2,
+            "username": "valijon",
+            "password": "1234"
+        }
+    ],
+    "current_user_id": 3
 }
